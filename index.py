@@ -45,3 +45,9 @@ class Zomato:
             else:
                 print(f"No dish found with ID '{dish_id}' in the menu. Skipped.")
         self.orders.append(order)
+
+    def find_dish(self, dish_id):
+        for dish in self.menu:
+            if dish['dish_id'] == dish_id and dish['availability']:
+                return dish
+        return None    
