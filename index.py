@@ -30,4 +30,18 @@ class Zomato:
                 break
         else:
             print(f"No dish found with ID '{dish_id}' in the menu.")       
-    
+   
+    def take_order(self, customer_name, dish_ids):
+        order = {
+            'order_id': len(self.orders) + 1,
+            'customer_name': customer_name,
+            'dishes': []
+        }
+        for dish_id in dish_ids:
+            dish = self.find_dish(dish_id)
+            if dish:
+                order['dishes'].append(dish)
+                print(f"Dish '{dish['dish_name']}' added to the order.")
+            else:
+                print(f"No dish found with ID '{dish_id}' in the menu. Skipped.")
+        self.orders.append(order)
