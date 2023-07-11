@@ -51,3 +51,21 @@ class Zomato:
             if dish['dish_id'] == dish_id and dish['availability']:
                 return dish
         return None    
+    def update_order(self, order_id, status):
+        for order in self.orders:
+            if order['order_id'] == order_id:
+                order['status'] = status
+                print(f"Order ID '{order_id}' updated. New status: {status}")
+                break
+        else:
+            print(f"No order found with ID '{order_id}'.")
+
+    def review_orders(self):
+        if not self.orders:
+            print("No orders to review.")
+        else:
+            print("Reviewing all orders:")
+            for order in self.orders:
+                print(f"Order ID: {order['order_id']}, Customer: {order['customer_name']}, Status: {order.get('status', 'N/A')}")
+
+                
