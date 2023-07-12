@@ -61,7 +61,16 @@ def main():
         elif choice == "3":
             dish_id = input("Enter dish ID: ")
             available = input("is dish available ? (yes/no): ")
-            update(dish_id,available)    
+            update(dish_id,available)  
+        elif choice == "4":
+            customer_name = input("Enter customer name: ")
+            dish_id = input("Enter dish ID: ")
+            quantity = input("Enter dish quantity: ")
+            take_order(customer_name,dish_id,quantity)
+        elif choice == "5":
+
+        elif choice == "6":
+
         elif choice == "7":
             break
         else: 
