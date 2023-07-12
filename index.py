@@ -1,3 +1,4 @@
+from uuid import uuid4
 menu=[]
 orders=[]
 def add(dish_id,dish_name,price,available)  :
@@ -26,15 +27,33 @@ def update(dish_id,available):
         else:
             print("item not found")
 
-def take_order(customer_name,dish_id,quantity):
-    order={
-        "customer_name":customer_name,
-        "dish_id":dish_id,
-        "quantity":quantity,
-        "status":"received"
-    }
-    orders.append(order)
-    print(orders)
+def generate_id():
+    return str(uuid4())
+
+def take_order(customer_name,dish_id,quantity,order_id):
+    for item in menu:
+        if item["dish_id"] == dish_id:
+            order={
+                "customer_name":customer_name,
+                "dish_id":dish_id,
+                "quantity":quantity,
+                "status":"received",
+                "order_id":order_id
+            }
+            print(f"order created with ${order.order_id}")
+            orders.append(order)
+            print(orders)
+        else:
+            print("item not found,order something else")    
+
+def update_status(order_id,status):
+    for item in orders:
+        if item["order_id"] == order_id:
+            item["status"] = status
+            break
+        else:
+            print("order not found")
+
 #main loop
 def main():
     while True:
@@ -66,9 +85,12 @@ def main():
             customer_name = input("Enter customer name: ")
             dish_id = input("Enter dish ID: ")
             quantity = input("Enter dish quantity: ")
-            take_order(customer_name,dish_id,quantity)
+            order_id = generate_id()
+            take_order(customer_name,dish_id,quantity,order_id)
         elif choice == "5":
-
+            order_id = input("Enter order ID: ")
+            status = input("Enter status: ")
+            update_status(order_id,status)
         elif choice == "6":
 
         elif choice == "7":
