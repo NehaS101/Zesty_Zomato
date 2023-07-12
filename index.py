@@ -7,7 +7,15 @@ def add(dish_id,dish_name,price,available)  :
         "availability":available
     }
     menu.append(dish)
+    print(menu)
 
+def remove(dish_id):
+    for item in menu:
+        if item["dish_id"] == dish_id:
+            menu.remove(item)
+            break
+
+           
 #main loop
 def main():
     while True:
@@ -19,7 +27,7 @@ def main():
         print("4. Take new order")
         print("5. Update the status of an order")
         print("6. Review all orders")
-    
+        print("7. Exit")
         choice = input("Enter you choice: ")
 
         if choice == "1":
@@ -28,5 +36,14 @@ def main():
             price = input("Enter dish price: ")
             available = input("is dish available ? (yes/no): ")
             add(dish_id, dish_name, price, available)
+        elif choice == "2":
+            dish_id = input("Enter dish ID: ")
+            remove(dish_id)    
+        elif choice == "7":
+            break
+        else: 
+            print("Invalid choice.Please try again.")  
+
+
 if __name__ == "__main__":
     main()    
