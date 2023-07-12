@@ -54,6 +54,13 @@ def update_status(order_id,status):
         else:
             print("order not found")
 
+def review_order():
+    for item in orders:
+        print(item["order_id"] + "-" + item["customer_name"] + "-" + item["dish_id"] + "-" + item["quantity"] + "-" + item["status"])
+
+def exit():
+    print("exiting.....") 
+
 #main loop
 def main():
     while True:
@@ -92,8 +99,9 @@ def main():
             status = input("Enter status: ")
             update_status(order_id,status)
         elif choice == "6":
-
+            review_order()
         elif choice == "7":
+            exit()
             break
         else: 
             print("Invalid choice.Please try again.")  
