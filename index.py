@@ -1,4 +1,5 @@
 menu=[]
+orders=[]
 def add(dish_id,dish_name,price,available)  :
     dish={
         "dish_id":dish_id,
@@ -18,7 +19,22 @@ def remove(dish_id):
             print("item not found")
 
 def update(dish_id,available):
+    for item in menu:
+        if item["dish_id"] == dish_id:
+            item["availability"] = available
+            break
+        else:
+            print("item not found")
 
+def take_order(customer_name,dish_id,quantity):
+    order={
+        "customer_name":customer_name,
+        "dish_id":dish_id,
+        "quantity":quantity,
+        "status":"received"
+    }
+    orders.append(order)
+    print(orders)
 #main loop
 def main():
     while True:
