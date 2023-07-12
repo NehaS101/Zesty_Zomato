@@ -14,8 +14,11 @@ def remove(dish_id):
         if item["dish_id"] == dish_id:
             menu.remove(item)
             break
+        else:
+            print("item not found")
 
-           
+def update(dish_id,available):
+
 #main loop
 def main():
     while True:
@@ -39,6 +42,10 @@ def main():
         elif choice == "2":
             dish_id = input("Enter dish ID: ")
             remove(dish_id)    
+        elif choice == "3":
+            dish_id = input("Enter dish ID: ")
+            available = input("is dish available ? (yes/no): ")
+            update(dish_id,available)    
         elif choice == "7":
             break
         else: 
