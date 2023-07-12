@@ -16,17 +16,14 @@ def remove(dish_id):
         if item["dish_id"] == dish_id:
             menu.remove(item)
             break
-        else:
-            print("item not found")
 
 def update(dish_id,available):
     for item in menu:
         if item["dish_id"] == dish_id:
             item["availability"] = available
             break
-        else:
-            print("item not found")
 
+        
 def generate_id():
     return str(uuid4())
 
@@ -37,10 +34,10 @@ def take_order(customer_name,dish_id,quantity,order_id):
                 "customer_name":customer_name,
                 "dish_id":dish_id,
                 "quantity":quantity,
-                "status":"received",
-                "order_id":order_id
+                "order_id":order_id,
+                "status":"received"
             }
-            print(f"order created with ${order.order_id}")
+            print("order created with "+order["order_id"])
             orders.append(order)
             print(orders)
         else:
@@ -56,7 +53,7 @@ def update_status(order_id,status):
 
 def review_order():
     for item in orders:
-        print(item["order_id"] + "-" + item["customer_name"] + "-" + item["dish_id"] + "-" + item["quantity"] + "-" + item["status"])
+        print("item with order id "+item["order_id"] + " of " + item["customer_name"] + " have dish id " + item["dish_id"] + " and " + item["quantity"] + " is " + item["status"])
 
 def exit():
     print("exiting.....") 
